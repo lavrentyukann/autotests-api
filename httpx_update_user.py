@@ -26,9 +26,6 @@ print('Login data :', login_data)
 client.headers["authorization"] = f"Bearer {login_data['token']['accessToken']}"
 
 # Запрос на обновление пользователя
-update_user_headers = {
-    "Authorization": login_data['token']['accessToken']
-}
 update_user_payload = {
   "email": get_random_email(),
   "lastName": "string",
