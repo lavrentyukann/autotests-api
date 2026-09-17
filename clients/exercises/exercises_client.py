@@ -6,7 +6,7 @@ class GetExercisesQueryDict(TypedDict):
     """
     Описание структуры запроса на получение списка заданий.
     """
-    courseId = str
+    courseId: str
 
 class CreateExerciseRequestDict(TypedDict):
     """
