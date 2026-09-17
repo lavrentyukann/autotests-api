@@ -34,7 +34,7 @@ class CourseClient(APIClient):
     """
     Клиент для работы с /api/v1/courses
     """
-    def get_courses(self, query: GetCoursesQueryDict) -> Response:
+    def get_courses_api(self, query: GetCoursesQueryDict) -> Response:
         """
         Метод получения списка курсов.
 
@@ -43,7 +43,7 @@ class CourseClient(APIClient):
         """
         return self.get(f"/api/v1/courses", params=query)
 
-    def get_course(self, course_id: str) -> Response:
+    def get_course_api(self, course_id: str) -> Response:
         """
         Метод получения курса.
 
@@ -52,7 +52,7 @@ class CourseClient(APIClient):
         """
         return self.get(f"/api/v1/courses/{course_id}")
 
-    def create_course(self, request: CreateCourseRequestDict) -> Response:
+    def create_course_api(self, request: CreateCourseRequestDict) -> Response:
         """
         Метод создания курса.
 
@@ -62,7 +62,7 @@ class CourseClient(APIClient):
         """
         return self.post(f"/api/v1/courses", json=request)
 
-    def update_course(self, course_id: str, request: UpdateCourseRequestDict) -> Response:
+    def update_course_api(self, course_id: str, request: UpdateCourseRequestDict) -> Response:
         """
         Метод обновления курса.
 
@@ -72,7 +72,7 @@ class CourseClient(APIClient):
         """
         return self.patch(f"/api/v1/courses/{course_id}", json=request)
 
-    def delete_course(self, course_id: str) -> Response:
+    def delete_course_api(self, course_id: str) -> Response:
         """
         Метод удаления курса.
 
