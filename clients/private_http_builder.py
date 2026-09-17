@@ -1,14 +1,11 @@
-import os
-
-from httpx import Client
-
-from clients.authentication.authentication_client import get_authentication_client, LoginRequestDict
 from typing import TypedDict
+from httpx import Client
+from clients.authentication.authentication_client import get_authentication_client, LoginRequestDict
 
-# Структура данных пользователя для авторизации
-class AuthenticationUserDict(TypedDict):
+class AuthenticationUserDict(TypedDict):  # Структура данных пользователя для авторизации
     email: str
     password: str
+
 
 # Создаем private builder
 def get_private_http_client(user: AuthenticationUserDict) -> Client:
@@ -30,5 +27,5 @@ def get_private_http_client(user: AuthenticationUserDict) -> Client:
         timeout=100,
         base_url="http://localhost:8000",
         # Добавляем заголовок авторизации
-        headers={"Authorization": f"Bearer {login_response['token']['access_token']}"}
+        headers={"Authorization": f"Bearer {login_response['token']['accessToken']}"}
     )
