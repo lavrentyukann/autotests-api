@@ -130,7 +130,6 @@ class ExercisesClient(APIClient):
         response = self.create_exercise_api(request)
         return response.json()
 
-    #
     def get_exercises(self, query: GetExercisesQueryDict) -> GetExercisesResponseDict:
         """
         Получает список заданий курса и возвращает распарсенный JSON-ответ.
