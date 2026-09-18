@@ -120,7 +120,6 @@ class ExercisesClient(APIClient):
         """
         return self.delete(f"/api/v1/exercises/{exercise_id}")
 
-    # метод создает задание, возвращает объект
     def create_exercise(self, request: CreateExerciseRequestDict) -> CreateExerciseResponseDict:
         """
         Создаёт задание и возвращает распарсенный JSON-ответ.
