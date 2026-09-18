@@ -73,6 +73,3 @@ def get_files_client(user: AuthenticationUserDict) -> FilesClient:
     :return: Готовый к использованию FilesClient.
     """
     return FilesClient(client=get_private_http_client(user))
-
-# client = get_files_client({'email': '', 'password':''})
-# client.delete_file()
