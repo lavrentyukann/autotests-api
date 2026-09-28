@@ -28,7 +28,7 @@ class LoginResponseSchema(BaseModel):  # Добавили структуру о�
 
 
 class RefreshRequestSchema(BaseModel):
-    model_config = ConfigDict(alias_generator=to_camel, validate_by_name=True)
+    model_config = ConfigDict(alias_generator=to_camel, validate_by_name=True, serialize_by_alias=True)
     """
     Описание структуры запроса для обновления токена.
     """
