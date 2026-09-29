@@ -1,10 +1,10 @@
 import httpx
-from tools.fakers import get_random_email  # Импортируем функцию для генерации случайного email
+from tools.fakers import fake  # Импортируем функцию для генерации случайного email
 
 client = httpx.Client(base_url="http://localhost:8000/api/v1")
 # Создаем пользователя
 create_user_payload = {
-    "email": get_random_email(),  # Используем функцию для генерации случайного email
+    "email": fake.email(),  # Используем функцию для генерации случайного email
     "password": "string",
     "lastName": "string",
     "firstName": "string",
@@ -27,7 +27,7 @@ client.headers["authorization"] = f"Bearer {login_data['token']['accessToken']}"
 
 # Запрос на обновление пользователя
 update_user_payload = {
-  "email": get_random_email(),
+  "email": fake.email(),
   "lastName": "string",
   "firstName": "string",
   "middleName": "string"
