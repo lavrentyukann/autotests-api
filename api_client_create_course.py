@@ -5,7 +5,6 @@ from clients.files.files_schema import CreateFileRequestSchema
 from clients.private_http_builder import AuthenticationUserSchema
 from clients.users.public_users_client import get_public_users_client
 from clients.users.users_schema import CreateUserRequestSchema
-from tools.fakers import fake
 
 public_users_client = get_public_users_client()
 
@@ -18,6 +17,8 @@ authentication_user = AuthenticationUserSchema(
     email=create_user_request.email,
     password=create_user_request.password
 )
+
+# Загружаем файл
 files_client = get_files_client(authentication_user)
 courses_client = get_courses_client(authentication_user)
 
@@ -25,6 +26,7 @@ create_file_request = CreateFileRequestSchema(upload_file='./testdata/files/linu
 create_file_response = files_client.create_file(create_file_request)
 print('Create file data:', create_file_response)
 
+# Создаем курс
 create_course_request = CreateCourseRequestSchema(
     preview_file_id=create_file_response.file.id,   # не фейковые данные, а валидные
     created_by_user_id=create_user_response.user.id
