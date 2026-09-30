@@ -1,5 +1,7 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_camel
+
+from tools.fakers import fake
 
 
 class TokenSchema(BaseModel):
@@ -16,8 +18,8 @@ class LoginRequestSchema(BaseModel):
     """
     Описание структуры запроса на аутентификацию.
     """
-    email: str
-    password: str
+    email: str = Field(default_factory=fake.email)    # для негативных сценариев!
+    password: str = Field(default_factory=fake.password)    # для положительных - явно указать при инициализации
 
 
 class LoginResponseSchema(BaseModel):  # Добавили структуру ответа аутентификации
@@ -32,4 +34,5 @@ class RefreshRequestSchema(BaseModel):
     """
     Описание структуры запроса для обновления токена.
     """
-    refresh_token: str
+    refresh_token: str = Field(default_factory=fake.sentence)     # для негативных сценариев
+                                                                  # # для положительных - явно указать при инициализации

@@ -1,5 +1,6 @@
-from pydantic import BaseModel, HttpUrl, ConfigDict
+from pydantic import BaseModel, HttpUrl, ConfigDict, Field
 from pydantic.alias_generators import to_camel
+from tools.fakers import fake
 
 
 class FileSchema(BaseModel):
@@ -17,8 +18,8 @@ class CreateFileRequestSchema(BaseModel):
     """
     model_config = ConfigDict(alias_generator=to_camel, validate_by_name=True, serialize_by_alias=True)
 
-    filename: str
-    directory: str
+    filename: str = Field(default_factory=lambda: f"{fake.uuid4()}.png")
+    directory: str = Field(default = "tests")
     upload_file: str
 
 class CreateFileResponseSchema(BaseModel):
